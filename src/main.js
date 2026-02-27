@@ -15,11 +15,13 @@ import { setActiveNav } from './utils/activeNav';
 import { maybeShowWelcome } from './services/welcomeService';
 import { fetchServices } from './services/servicesApi';
 
-const isLocalhost = window.location.hostname === 'localhost';
+/* const isLocalhost = window.location.hostname === 'localhost';
 
 export const devBackendUrl = isLocalhost
   ? 'http://localhost:3000'
-  : 'http://192.168.1.40:3000';
+  : 'http://192.168.1.40:3000'; */
+
+export const devBackendUrl = import.meta.env.VITE_BACKEND_URL;
 
 
 await fetchServices();
