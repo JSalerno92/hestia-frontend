@@ -1,4 +1,5 @@
-import { devBackendUrl } from '../main';
+import { backendUrl } from '../../config';
+// import { devBackendUrl } from '../main';
 import { formatReadableDate, formatInfo } from '../utils/formatUtils';
 
 let selectedBooking = null;
@@ -51,7 +52,7 @@ async function loadAvailability(serviceId, container) {
 
   try {
     const res = await fetch(
-      `${devBackendUrl}/api/services/${serviceId}/availability`
+      `${backendUrl}/api/services/${serviceId}/availability`
     );
 
     if (!res.ok) throw new Error();
@@ -233,7 +234,7 @@ async function handleBookingSubmit(e) {
 
   try {
     const res = await fetch(
-      `${devBackendUrl}/api/bookings`,
+      `${backendUrl}/api/bookings`,
       {
         method: 'POST',
         headers: {
@@ -265,7 +266,7 @@ async function loadServiceConfig(serviceId, container) {
 
   try {
     const res = await fetch(
-      `${devBackendUrl}/api/services/${serviceId}/config`
+      `${backendUrl}/api/services/${serviceId}/config`
     );
 
     if (!res.ok) {

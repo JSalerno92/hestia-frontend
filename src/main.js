@@ -21,10 +21,13 @@ export const devBackendUrl = isLocalhost
   ? 'http://localhost:3000'
   : 'http://192.168.1.40:3000'; */
 
-export const devBackendUrl = import.meta.env.VITE_BACKEND_URL;
+/* export const devBackendUrl = import.meta.env.VITE_BACKEND_URL; */
 
-
-await fetchServices();
+try {
+  await fetchServices();
+} catch (e) {
+  console.error("Services preload failed", e);
+}
 
 const app = document.querySelector('#app');
 

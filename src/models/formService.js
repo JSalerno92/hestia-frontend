@@ -1,4 +1,5 @@
-import { devBackendUrl } from '../main';
+import { backendUrl } from '../../config';
+// import { devBackendUrl } from '../main';
 import { updateMainContent } from '../utils/dom';
 
 export async function renderFormService(service) {
@@ -31,7 +32,7 @@ export async function renderFormService(service) {
 async function loadFormByService(serviceId, container) {
   try {
     const res = await fetch(
-      `${devBackendUrl}/api/forms/by-service/${serviceId}`
+      `${backendUrl}/api/forms/by-service/${serviceId}`
     );
 
     const formDefinition = await res.json();
@@ -138,7 +139,7 @@ async function handleSubmit(e) {
   const payload = Object.fromEntries(formData.entries());
 
   try {
-    const res = await fetch(`${devBackendUrl}/api/form-submissions`, {
+    const res = await fetch(`${backendUrl}/api/form-submissions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
