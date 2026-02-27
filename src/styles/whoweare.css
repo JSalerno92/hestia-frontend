@@ -1,0 +1,37 @@
+.whoweare-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 16px;
+}
+
+.whoweare-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px 16px;
+}
+
+.whoweare-title {
+    font-size: var(--gral-font-size);
+    font-weight: 600;
+    color: rgb(var(--white));
+    text-decoration: underline;
+}
+
+.whoweare-text {
+    width: 100%;
+    padding: 20px;
+    background: rgba(var(--white), .35);
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--small-font-size);
+    color: rgb(var(--black));
+}
