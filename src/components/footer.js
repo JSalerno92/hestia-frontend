@@ -10,7 +10,7 @@ export function renderFooter() {
     <footer class="main-footer">
       <div class="container">
       <div class="col">
-        <p>Servicio disponible solo para San Miguel</p>
+        <p>Servicio disponible solo para San Miguel, Muñiz y Bella Vista</p>
       </div>
       <div class="col logo">
         <img src="/hestia-logo.svg" alt="Hestia logo"/>

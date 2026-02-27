@@ -127,9 +127,9 @@ function renderSlots(day, serviceId, slotsContainer, container) {
 
     btn.innerHTML = `
       <span class="slot-time">${slot.time}</span>
-      <span class="slot-capacity">
+      <!--<span class="slot-capacity">
         ${slot.capacity_remaining}
-      </span>
+      </span>-->
     `;
 
     btn.addEventListener('click', () => {

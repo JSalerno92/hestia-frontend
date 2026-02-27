@@ -150,6 +150,7 @@
 .service-col.left {
   padding: 20px 40px;
   overflow-y: auto;
+  white-space: pre-line;
 }
 
 /* service info */
