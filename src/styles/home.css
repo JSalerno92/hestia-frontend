@@ -205,6 +205,7 @@
     background: var(--calendar-bg);
     justify-content: space-around;
     padding-top: 40px;
+    gap: 50px;
     line-height: 1.6;
     letter-spacing: 0.8px;
 }
