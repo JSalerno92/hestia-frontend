@@ -2,23 +2,44 @@ export function sendBookingToWhatsApp(booking) {
 
   const phone = '5491141705938';
 
-  const message = `
+  const {
+    id,
+    date,
+    time_slot,
+    customer_data = {}
+  } = booking;
+
+  const {
+    name,
+    whatsapp,
+    email,
+    comments
+  } = customer_data;
+
+  // Formatear fecha (evitar ISO feo)
+  const formattedDate = new Date(date).toLocaleDateString('es-AR');
+
+  let message = `
     Nueva reserva 🔔
 
-    Reserva ID: ${booking.id}
+    Reserva ID: ${id}
+    Fecha: ${formattedDate}
+    Hora: ${time_slot}
 
-    Servicio: ${booking.service_name}
-    Fecha: ${booking.date}
-    Hora: ${booking.time}
-
-    Nombre: ${booking.name}
-    WhatsApp: ${booking.whatsapp}
-    Email: ${booking.email || '-'}
-    Comentarios: ${booking.comments || '-'}
+    Nombre: ${name}
+    WhatsApp: ${whatsapp}
     `.trim();
 
-  const encoded = encodeURIComponent(message);
+    // Solo incluir si existen
+    if (email) {
+        message += `\nEmail: ${email}`;
+    }
 
+    if (comments) {
+        message += `\nComentarios: ${comments}`;
+    }
+
+  const encoded = encodeURIComponent(message);
   const url = `https://wa.me/${phone}?text=${encoded}`;
 
   window.open(url, '_blank');

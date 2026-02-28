@@ -133,6 +133,7 @@ function renderSlots(day, serviceId, slotsContainer, container) {
         ${slot.capacity_remaining}
       </span>-->
     `;
+    console.log('renderSlots | serviceId: ', serviceId);
 
     btn.addEventListener('click', () => {
       selectedBooking = {
