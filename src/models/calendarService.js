@@ -262,7 +262,9 @@ async function handleBookingSubmit(e) {
   const formData = new FormData(e.target);
 
   const bookingData = {
-    ...selectedBooking,
+    service_id: selectedBooking.service_id,
+    date: selectedBooking.date,
+    time: selectedBooking.time,
     name: formData.get('name'),
     whatsapp: formData.get('whatsapp'),
     email: formData.get('email'),
