@@ -22,6 +22,7 @@ export const devBackendUrl = isLocalhost
   : 'http://192.168.1.40:3000'; */
 
 /* export const devBackendUrl = import.meta.env.VITE_BACKEND_URL; */
+console.log('app is running on production');
 
 try {
   await fetchServices();

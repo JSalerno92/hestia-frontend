@@ -1,6 +1,7 @@
 import { backendUrl } from '../../config';
 // import { devBackendUrl } from '../main';
 import { formatReadableDate, formatInfo } from '../utils/formatUtils';
+import { sendBookingToWhatsApp } from '../services/whatsapp';
 
 let selectedBooking = null;
 let currentServiceId = null;
@@ -219,7 +220,7 @@ function bindBookingModalEvents() {
     form.addEventListener('submit', handleBookingSubmit);
 }
 
-async function handleBookingSubmit(e) {
+/* async function handleBookingSubmit(e) {
   e.preventDefault();
 
   const formData = new FormData(e.target);
@@ -248,6 +249,46 @@ async function handleBookingSubmit(e) {
 
     await sendWhatsAppNotification(bookingData);
 
+    closeBookingModal();
+    await loadAvailability(currentServiceId, currentContainer);
+
+  } catch (err) {
+    alert('Error al generar la reserva');
+  }
+} */
+async function handleBookingSubmit(e) {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+
+  const bookingData = {
+    ...selectedBooking,
+    name: formData.get('name'),
+    whatsapp: formData.get('whatsapp'),
+    email: formData.get('email'),
+    comments: formData.get('comments')
+  };
+
+  try {
+
+    // 1️⃣ Persistir primero
+    const res = await fetch(
+      `${backendUrl}/api/bookings`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData)
+      }
+    );
+
+    if (!res.ok) throw new Error();
+
+    const savedBooking = await res.json();
+
+    // 2️⃣ Luego abrir WhatsApp
+    sendBookingToWhatsApp(savedBooking);
+
+    // 3️⃣ Refrescar UI
     closeBookingModal();
     await loadAvailability(currentServiceId, currentContainer);
 
