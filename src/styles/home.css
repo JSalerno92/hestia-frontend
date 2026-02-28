@@ -157,8 +157,8 @@
 .service-info {
   margin-top: 20px;
   line-height: 1.6;
-  color: #444;
   font-size: 0.95rem;
+  color: rgb(var(--white), .9);
 }
 
 .service-info p {
@@ -184,6 +184,29 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+}
+.calendar-col.left {
+    background: var(--main-color);
+    color: rgb(var(--white), .75);
+    justify-content: flex-start;
+    padding-top: 40px;
+    line-height: 2;
+    letter-spacing: 0.8px;
+}
+
+.calendar-col.center {
+    justify-content: flex-start;
+    padding-top: 40px;
+    line-height: 1.6;
+    letter-spacing: 0.8px;
+}
+
+.calendar-col.right {
+    background: var(--calendar-bg);
+    justify-content: space-around;
+    padding-top: 40px;
+    line-height: 1.6;
+    letter-spacing: 0.8px;
 }
 
 .modal-close {
@@ -232,10 +255,10 @@
 }
 
 .calendar-day-btn {
-  min-width: 110px;
+  min-width: 120px;
   padding: 8px;
   border-radius: 8px;
-  background: #f5f5f5;
+  background: rgb(var(--white), .9);
   cursor: pointer;
 }
 
@@ -251,6 +274,7 @@
 .service-config small {
     font-size: 1em;
     padding: 8px 12px;
+    line-height: 2.5;
     background: rgba(var(--black), .1);
 }
 

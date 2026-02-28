@@ -62,12 +62,12 @@
 }
 
 .calendar-slot {
-  padding: 8px 14px;
+  padding: 16px 20px;
   border-radius: 6px;
   border: 1px solid rgba(var(--white), .2);
   background: var(--main-color);
   color: rgb(var(--white));
-  font-size: 0.85em;
+  font-size: 0.9em;
   cursor: pointer;
   transition: all .15s ease-in-out;
   position: relative;
