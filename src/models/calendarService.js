@@ -61,7 +61,6 @@ async function loadAvailability(serviceId, container) {
     if (!res.ok) throw new Error();
 
     const data = await res.json();
-    console.log('loadAvailability - data: ', data);
 
     renderDays(data.days || [], serviceId, container);
 
@@ -135,7 +134,6 @@ function renderSlots(day, serviceId, slotsContainer, container) {
         ${slot.capacity_remaining}
       </span>-->
     `;
-    console.log('renderSlots | serviceId: ', serviceId);
 
     btn.addEventListener('click', () => {
       selectedBooking = {
@@ -238,8 +236,6 @@ async function handleBookingSubmit(e) {
     comments: formData.get('comments')
   };
 
-  console.log('handleBookingSubmit | bookingData: ', bookingData);
-
   try {
 
     // 1️⃣ Persistir primero
@@ -255,7 +251,6 @@ async function handleBookingSubmit(e) {
     if (!res.ok) throw new Error();
 
     const savedBooking = await res.json();
-    console.log('handleBookingSubmit | await res.json: ', savedBooking);
 
     // 2️⃣ Luego abrir WhatsApp
     // sendBookingToWhatsApp(savedBooking);

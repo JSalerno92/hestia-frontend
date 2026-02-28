@@ -1,6 +1,7 @@
 import { backendUrl } from '../../config';
 // import { devBackendUrl } from '../main';
 import { updateMainContent } from '../utils/dom';
+import { sendFormToWhatsApp } from '../services/whatsapp';
 
 export async function renderFormService(service) {
 
@@ -61,7 +62,10 @@ function buildForm(formDefinition) {
   form.className = 'contact-form';
   form.dataset.formId = formDefinition.id;
 
+  const labelMap = {};
+
   formDefinition.fields.forEach(field => {
+    labelMap[field.field_key] = field.label;
 
     const group = document.createElement('div');
     group.className = 'contact-group';
@@ -77,6 +81,8 @@ function buildForm(formDefinition) {
 
     form.appendChild(group);
   });
+  
+  form.dataset.labelMap = JSON.stringify(labelMap);
 
   const btnGroup = document.createElement('div');
   btnGroup.className = 'contact-group btn';
@@ -95,8 +101,6 @@ function buildForm(formDefinition) {
 }
 
 function createInput(field) {
-  console.log('FIELD:', field);
-  console.log('OPTIONS:', field.options);
 
   let element;
 
@@ -130,7 +134,7 @@ function createInput(field) {
   return element;
 }
 
-async function handleSubmit(e) {
+/* async function handleSubmit(e) {
   e.preventDefault();
 
   const form = e.target;
@@ -155,4 +159,35 @@ async function handleSubmit(e) {
   } catch (error) {
     alert('Error enviando formulario');
   }
+} */
+async function handleSubmit(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+  const payload = Object.fromEntries(formData.entries());
+
+  const labelMap = JSON.parse(form.dataset.labelMap || '{}');
+
+  const formattedData = {};
+
+  Object.entries(payload).forEach(([key, value]) => {
+    if (!value) return;
+
+    let formattedValue = value;
+
+    if (value === 'on') {
+      formattedValue = 'Sí';
+    }
+
+    formattedData[labelMap[key] || key] = formattedValue;
+  });
+
+  const serviceName = form
+    .closest('.form-service')
+    .querySelector('h2').textContent;
+
+  sendFormToWhatsApp(serviceName, formattedData);
+
+  form.innerHTML = `<p>Formulario enviado correctamente</p>`;
 }
