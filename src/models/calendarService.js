@@ -269,6 +269,8 @@ async function handleBookingSubmit(e) {
     comments: formData.get('comments')
   };
 
+  console.log('handleBookingSubmit | bookingData: ', bookingData);
+
   try {
 
     // 1️⃣ Persistir primero
@@ -284,6 +286,7 @@ async function handleBookingSubmit(e) {
     if (!res.ok) throw new Error();
 
     const savedBooking = await res.json();
+    console.log('handleBookingSubmit | await res.json: ', savedBooking);
 
     // 2️⃣ Luego abrir WhatsApp
     sendBookingToWhatsApp(savedBooking);
