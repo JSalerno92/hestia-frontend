@@ -22,7 +22,8 @@ export function sendBookingToWhatsApp(booking) {
   let message = `
     Nueva reserva 🔔
 
-    Reserva ID: ${id}
+    ID de reserva : ${id}
+    Servicio: ${booking.service_name}
     Fecha: ${formattedDate}
     Hora: ${time_slot}
 

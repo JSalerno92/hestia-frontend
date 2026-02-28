@@ -6,9 +6,11 @@ import { sendBookingToWhatsApp } from '../services/whatsapp';
 let selectedBooking = null;
 let currentServiceId = null;
 let currentContainer = null;
+let currentServiceName = null;
 
 export function renderCalendarService(service) {
   currentServiceId = service.id;
+  currentServiceName = service.name;
   const section = document.createElement('section');
   section.className = 'calendar-service';
 
@@ -221,42 +223,6 @@ function bindBookingModalEvents() {
     form.addEventListener('submit', handleBookingSubmit);
 }
 
-/* async function handleBookingSubmit(e) {
-  e.preventDefault();
-
-  const formData = new FormData(e.target);
-
-  const bookingData = {
-    ...selectedBooking,
-    name: formData.get('name'),
-    whatsapp: formData.get('whatsapp'),
-    email: formData.get('email'),
-    comments: formData.get('comments')
-  };
-
-  try {
-    const res = await fetch(
-      `${backendUrl}/api/bookings`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(bookingData)
-      }
-    );
-
-    if (!res.ok) throw new Error();
-
-    await sendWhatsAppNotification(bookingData);
-
-    closeBookingModal();
-    await loadAvailability(currentServiceId, currentContainer);
-
-  } catch (err) {
-    alert('Error al generar la reserva');
-  }
-} */
 async function handleBookingSubmit(e) {
   e.preventDefault();
 
@@ -292,7 +258,11 @@ async function handleBookingSubmit(e) {
     console.log('handleBookingSubmit | await res.json: ', savedBooking);
 
     // 2️⃣ Luego abrir WhatsApp
-    sendBookingToWhatsApp(savedBooking);
+    // sendBookingToWhatsApp(savedBooking);
+    sendBookingToWhatsApp({
+      ...savedBooking,
+      service_name: currentServiceName
+    });
 
     // 3️⃣ Refrescar UI
     closeBookingModal();
