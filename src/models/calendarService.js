@@ -9,7 +9,6 @@ let currentContainer = null;
 let currentServiceName = null;
 
 export function renderCalendarService(service) {
-  console.log('renderCalendarService | service.ui_color: ', service.ui_color);
   currentServiceId = service.id;
   currentServiceName = service.name;
   const section = document.createElement('section');
@@ -62,6 +61,7 @@ async function loadAvailability(serviceId, container) {
     if (!res.ok) throw new Error();
 
     const data = await res.json();
+    console.log('loadAvailability | res.json: ', data);
 
     renderDays(data.days || [], serviceId, container);
 
