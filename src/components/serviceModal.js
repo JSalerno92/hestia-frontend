@@ -8,7 +8,7 @@ export async function openServiceModal(service) {
     const modal = document.createElement('div');
     modal.className = 'service-modal';
 
-    modal.style.borderTop = `6px solid ${service.ui_color}`;
+    // modal.style.background = `6px solid ${service.ui_color}`;
 
     const closeBtn = document.createElement('button');
     closeBtn.className = 'modal-close';

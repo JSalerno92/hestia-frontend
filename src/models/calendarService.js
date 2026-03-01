@@ -9,13 +9,14 @@ let currentContainer = null;
 let currentServiceName = null;
 
 export function renderCalendarService(service) {
+  console.log('renderCalendarService | service.ui_color: ', service.ui_color);
   currentServiceId = service.id;
   currentServiceName = service.name;
   const section = document.createElement('section');
   section.className = 'calendar-service';
 
   section.innerHTML = `
-    <div class="calendar-col left">
+    <div class="calendar-col left" style="background: ${service.ui_color}">
       <h2>${service.name}</h2>
       <div class="service-info">
         ${formatInfo(service.info)}

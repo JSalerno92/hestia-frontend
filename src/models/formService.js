@@ -9,7 +9,7 @@ export async function renderFormService(service) {
   container.className = 'form-service';
 
   container.innerHTML = `
-    <div class="service-col left">
+    <div class="service-col left" style="background: ${service.ui_color}">
       <h2>${service.name}</h2>
       <p>${service.info || ''}</p>
     </div>

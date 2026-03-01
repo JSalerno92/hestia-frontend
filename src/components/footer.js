@@ -19,15 +19,33 @@ export function renderFooter() {
         <div style="display:flex;flex-direction:column;justify-content:space-evenly;align-items:flex-start;">
           <div class="col-group ig">
             <img src="/instagram-logo.svg" alt="Instagram logo"/>
-            <p>Serviciosheastia</p>
+            <a 
+              href="https://www.instagram.com/servicioshestia?igsh=d3ptbW8xbGhlNDRx"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              servicioshestia
+            </a>
           </div>
           <div class="col-group wap">
-            <img src="/whatsapp-logo.svg" alt="whatsapp logo"/>
-            <p>1141705938</p>
+            <img src="/whatsapp-logo.svg" alt="WhatsApp logo"/>
+            <a 
+              href="https://wa.me/5491141705938"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              1141705938
+            </a>
           </div>
           <div class="col-group mail">
-            <img src="/email-logo.svg" alt="mail logo"/>
-            <p>servicioshestia@gmail.com</p>
+            <img src="/email-logo.svg" alt="Email logo"/>
+            <a 
+              href="mailto:servicioshestia@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              servicioshestia@gmail.com
+            </a>
           </div>
         </div>
       </div>

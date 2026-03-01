@@ -29,6 +29,11 @@
     align-items: center;
     gap: 4px;
 }
+.main-footer .container .col .col-group a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
 .main-footer .container .col .col-group img {
     max-width: 1em;
 }
