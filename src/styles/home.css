@@ -54,11 +54,9 @@
     transition: all .1s ease-in-out;
     cursor: pointer;
     line-height: 1.5;
-    /* box-shadow: 0 0 8px 5px #fae1c494; */
     box-shadow: 0 0 8px 1px #fff;
     user-select: none;
     -moz-user-select: none;
-    /* background: var(--main-color); */
 }
 
 .home-btn a {
@@ -125,14 +123,12 @@
 }
 
 .service-modal {
-  background: white;
+  background: rgb(var(--white));
   width: calc(100% - 40px);
   height: calc(100% - 40px);
   border-radius: 16px;
   padding: 0;
   position: relative;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr; */
   overflow: hidden;
 }
 
@@ -148,9 +144,12 @@
 }
 
 .service-col.left {
-  padding: 20px 40px;
-  overflow-y: auto;
-  white-space: pre-line;
+    padding: 20px 40px;
+    white-space: pre-line;
+    justify-content: flex-start;
+    padding-top: 40px;
+    line-height: 1.6;
+    letter-spacing: 0.8px;
 }
 
 /* service info */
@@ -184,6 +183,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+    overflow: hidden;
 }
 .calendar-col.left {
     background: var(--main-color);
@@ -291,22 +291,84 @@
     }
 
     .home-btn {
-        /* width: 33.3333%; */
         width: 30%;
         min-height: 160px;
     }
-    .form-service {
+    .service-config {
+        width: 100%;
+        display: flex;
         flex-direction: column;
+        align-items: flex-start;
     }
-
-    .calendar-service {
-        flex-direction: column;
+    .service-config h4 {
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: underline 1px solid rgba(var(--black), .25);
+    }
+    .service-config p {
+        padding: 10px 0px;
+        text-align: left;
+    }
+    .service-config small {
+        margin-top: 10px;
+        padding: 10px 24px;
+        text-align: center;
+    }
+    .modal-close {
+        color: rgba(var(--white), .9);
+    }
+    .service-overlay {
+        align-items: flex-start;
+        padding: 20px 0;
         overflow-y: auto;
     }
-    .calendar-col {
+    .service-modal {
+        width: calc(100% - 20px);
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        border-radius: 16px;
+    }
+
+    .form-service,
+    .calendar-service {
+        flex-direction: column;
+    }
+    .calendar-col.left {
+        border-radius: 10px 10px 0 0;
+    }
+    .calendar-col,
+    .calendar-col.right {
         width: 100%;
     }
     .calendar-col.right {
-        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+    .service-col {
+        height: auto;
+        min-height: auto;
+        overflow: visible;
+        padding: 0;
+    }
+    .service-col.left {        
+        background: var(--main-color);
+        border-radius: 10px 10px 0 0;
+        color: rgba(var(--white), .9);
+    }
+    .service-col.left p {
+        align-items: flex-start;
+        padding-top: 0px;
+    }
+    .service-col.center {
+        align-items: flex-start;
+        margin-bottom: 12px;
+        background: none;
+    }
+    .service-col.center .contact-form {
+        border-radius: 0;
+        background: transparent;
+    }
+    .service-col.right {
+        display: none;
     }
 }
