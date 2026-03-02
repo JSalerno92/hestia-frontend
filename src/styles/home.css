@@ -171,7 +171,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background: var(--header-background); /* opcional, para diferenciar */
 }
 
@@ -196,6 +196,7 @@
 
 .calendar-col.center {
     justify-content: flex-start;
+    align-items: flex-start;
     padding-top: 40px;
     line-height: 1.6;
     letter-spacing: 0.8px;
@@ -241,9 +242,10 @@
 
 .form-container {
     width: 100%;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 /* CALENDAR */
