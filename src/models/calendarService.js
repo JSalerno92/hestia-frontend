@@ -17,6 +17,7 @@ export function renderCalendarService(service) {
   section.innerHTML = `
     <div class="calendar-col left" style="background: ${service.ui_color}">
       <h2>${service.name}</h2>
+      <p>${service.description}</p>
       <div class="service-info">
         ${formatInfo(service.info)}
       </div>

@@ -7,6 +7,7 @@ import './styles/service.css';
 import './styles/contact.css';
 import './styles/whoweare.css';
 import './styles/welcomeoverlay.css';
+import './styles/scrollbar.css';
 
 import { renderLayout } from './utils/dom';
 import { renderHome } from './pages/home';
