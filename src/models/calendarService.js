@@ -1,6 +1,6 @@
 import { backendUrl } from '../../config';
 // import { devBackendUrl } from '../main';
-import { formatReadableDate, formatInfo } from '../utils/formatUtils';
+import { formatReadableDate, formatInfo, addMinutesToTime } from '../utils/formatUtils';
 import { sendBookingToWhatsApp } from '../services/whatsapp';
 
 let selectedBooking = null;
@@ -62,16 +62,15 @@ async function loadAvailability(serviceId, container) {
     if (!res.ok) throw new Error();
 
     const data = await res.json();
-    console.log('loadAvailability | res.json: ', data);
 
-    renderDays(data.days || [], serviceId, container);
+    renderDays(data.days || [], serviceId, container, data.duration_minutes);
 
   } catch (err) {
     daysContainer.innerHTML = `<p>Error cargando disponibilidad</p>`;
   }
 }
 
-function renderDays(days, serviceId, container) {
+function renderDays(days, serviceId, container, duration) {
   const slider = container.querySelector('.calendar-day-slider');
   const slotsContainer = container.querySelector('.calendar-slots-container');
 
@@ -98,7 +97,7 @@ function renderDays(days, serviceId, container) {
     dayBtn.textContent = formatReadableDate(day.date);
 
     dayBtn.addEventListener('click', () => {
-      renderSlots(day, serviceId, slotsContainer, container);
+      renderSlots(day, serviceId, slotsContainer, container, duration);
 
       // Scoped removal (evita interferencias)
       container.querySelectorAll('.calendar-day-btn')
@@ -116,7 +115,7 @@ function renderDays(days, serviceId, container) {
   });
 }
 
-function renderSlots(day, serviceId, slotsContainer, container) {
+function renderSlots(day, serviceId, slotsContainer, container, duration) {
   slotsContainer.innerHTML = '';
 
   const availableSlots = day.slots.filter(slot => slot.available);
@@ -127,11 +126,15 @@ function renderSlots(day, serviceId, slotsContainer, container) {
   }
 
   availableSlots.forEach(slot => {
+    const init_time = slot.time;
+    const end_time = addMinutesToTime(slot.time, duration);
+    const timeRange = `${init_time} a ${end_time}`
+
     const btn = document.createElement('button');
     btn.className = 'calendar-slot';      
 
     btn.innerHTML = `
-      <span class="slot-time">${slot.time}</span>
+      <span class="slot-time">${timeRange}</span>
       <!--<span class="slot-capacity">
         ${slot.capacity_remaining}
       </span>-->
