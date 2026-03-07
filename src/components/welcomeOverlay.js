@@ -1,4 +1,6 @@
 export function showWelcomeOverlay(config, onFinish) {
+  console.log('showWelcomeOverlay | config: ', config);
+  console.log('showWelcomeOverlay | onFinish: ', onFinish);
   const duration = Number(config.durationMs) || 3000;
 
   const overlay = document.createElement('div');

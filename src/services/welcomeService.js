@@ -1,6 +1,5 @@
 import { backendUrl } from "../../config";
 import { showWelcomeOverlay } from "../components/welcomeOverlay";
-// import { devBackendUrl } from "../main";
 
 function getMonthlyStorageKey() {
   const now = new Date();
@@ -24,6 +23,8 @@ export async function maybeShowWelcome(renderAppCallback) {
   try {
     const res = await fetch(`${backendUrl}/api/welcome-message`);
     const config = await res.json();
+
+    console.log('maybeShowWelcome | config: ', config);
 
     if (!config.active || !isWithinDateRange(config)) {
       renderAppCallback();

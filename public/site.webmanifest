@@ -1,6 +1,8 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Casa Hestia",
+  "short_name": "CasaHestia",
+  "description": "Sistema de reservas de Casa Hestia",
+  "start_url": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
