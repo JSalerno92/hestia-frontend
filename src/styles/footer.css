@@ -74,6 +74,7 @@
 .footer-legal-links a{
     text-decoration: none;
     color: rgb(var(--dark-grey));
+    cursor: pointer;
 }
 
 .footer-legal-links a:hover{
