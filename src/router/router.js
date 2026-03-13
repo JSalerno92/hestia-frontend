@@ -5,37 +5,19 @@ import { renderContact } from '../pages/contact';
 import { setActiveNav } from '../utils/activeNav';
 import { bindContactForm } from '../utils/contactUtils';
 import { renderService } from '../pages/service.js';
+// legales
+import { renderPrivacy } from '../pages/privacy';
+import { renderTerms } from '../pages/terms';
 
 const routes = {
   home: renderHome,
   whoweare: renderWhoweare,
   contact: renderContact,
   service: renderService,
+  privacy: renderPrivacy,
+  terms: renderTerms,
 };
 
-/* export function navigateTo(routeName) {
-  const renderFn = routes[routeName];
-
-  if (!renderFn) {
-    console.error(`Ruta no definida: ${routeName}`);
-    return;
-  }
-
-  updateMainContent(renderFn());
-
-  const routeToNavId = {
-    home: 'homeBtn',
-    whoweare: 'whoWeAre',
-    contact: 'contactBtn',
-  };
-
-  setActiveNav(routeToNavId[routeName]);
-
-  // Bind específico de contacto
-  if (routeName === 'contact') {
-    setTimeout(bindContactForm, 0);
-  }
-} */
 export function navigateTo(routeName, params = {}) {
   const renderFn = routes[routeName];
 

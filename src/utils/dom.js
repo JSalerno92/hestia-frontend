@@ -16,7 +16,11 @@ export function renderLayout(contentHtml) {
 
 export function updateMainContent(contentHtml) {
   const main = document.querySelector('.main-container');
+  main.classList.remove('legal-layout');
 
+  if(contentHtml.includes('legal-page')){
+      main.classList.add('legal-layout');
+  }
   if (!main) {
     console.error('No se encontró .main-container');
     return;

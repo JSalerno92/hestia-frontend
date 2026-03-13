@@ -51,3 +51,31 @@
         max-width: 70px;
     }
 }
+
+/* franja legal */
+.footer-legal{
+    width: 100%;
+    background: var(--header-background);
+    border-top: 1px solid rgba(var(--black), .1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 6px 10px;
+    font-size: 0.7em;
+}
+
+.footer-legal-links{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.footer-legal-links a{
+    text-decoration: none;
+    color: rgb(var(--dark-grey));
+}
+
+.footer-legal-links a:hover{
+    text-decoration: underline;
+}

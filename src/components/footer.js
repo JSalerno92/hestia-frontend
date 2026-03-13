@@ -1,11 +1,4 @@
 export function renderFooter() {
-  /* return `
-    <footer class="main-footer">
-      <div class="container">
-        <p>© ${new Date().getFullYear()} Aldu & Cata</p>
-      </div>
-    </footer>
-  `; */
   return `
     <footer class="main-footer">
       <div class="container">
@@ -50,5 +43,14 @@ export function renderFooter() {
         </div>
       </div>
     </footer>
+    <!-- Franja legal para "politicas de privacidad" y "terminos y condiciones" -->
+    <div class="footer-legal">
+      <span>© ${new Date().getFullYear()} Hestia</span>
+      <div class="footer-legal-links">
+        <a data-route="privacy">Política de privacidad</a>
+        <span>|</span>
+        <a data-route="terms">Términos y condiciones</a>
+      </div>
+    </div>
   `;
 }

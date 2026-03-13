@@ -37,7 +37,7 @@ export function renderHeader() {
           <div class="nav-btn" id="mobileContactBtn">Contacto</div>
         </div>
         <div class="copy-container">
-          <p>© ${new Date().getFullYear()} Aldu & Cata</p>
+          <p>© ${new Date().getFullYear()} Hestia</p>
         </div>
       </div>
 

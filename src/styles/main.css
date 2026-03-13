@@ -84,3 +84,35 @@ h1 {
     padding: 10px 0;
   }
 }
+
+/* legal page */
+.main-container.legal-layout{
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.legal-page{
+  max-width: 900px;
+  margin: 0px auto;
+  padding: 0 20px;
+  line-height: 1.6;
+}
+
+.legal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.legal-page h1{
+  margin-bottom: 20px;
+}
+
+.legal-page h2{
+  margin-top: 28px;
+}
+
+.legal-page ul{
+  margin: 10px 0 15px 20px;
+}

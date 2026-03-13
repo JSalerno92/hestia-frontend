@@ -15,6 +15,7 @@ import { bindHeaderEvents } from './components/headerEvents';
 import { setActiveNav } from './utils/activeNav';
 import { maybeShowWelcome } from './services/welcomeService';
 import { fetchServices } from './services/servicesApi';
+import { navigateTo } from './router/router.js';
 
 try {
   await fetchServices();
@@ -35,3 +36,13 @@ function renderApp() {
 
 maybeShowWelcome(renderApp);
 
+document.addEventListener("click", (e) => {
+
+  const route = e.target.dataset.route;
+
+  if (route) {
+    e.preventDefault();
+    navigateTo(route);
+  }
+
+});
